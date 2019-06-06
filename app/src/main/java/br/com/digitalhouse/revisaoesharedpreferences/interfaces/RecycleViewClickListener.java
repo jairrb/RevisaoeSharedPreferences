@@ -1,4 +1,4 @@
-package br.com.digitalhouse.revisaoesharedpreferences;
+package br.com.digitalhouse.revisaoesharedpreferences.interfaces;
 
 import br.com.digitalhouse.revisaoesharedpreferences.model.Contact;
 

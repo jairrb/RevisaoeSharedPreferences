@@ -1,32 +1,44 @@
 package br.com.digitalhouse.revisaoesharedpreferences.detail.view;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import br.com.digitalhouse.revisaoesharedpreferences.R;
+import br.com.digitalhouse.revisaoesharedpreferences.model.Contact;
+
 
 public class DetailActivity extends AppCompatActivity {
+
+    private ImageView circleImageViewPhoto;
+    private TextView textViewName;
+    private TextView textViewPhone;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
+
+        textViewName = findViewById(R.id.textViewName);
+        textViewPhone = findViewById(R.id.textViewPhone);
+        circleImageViewPhoto = findViewById(R.id.circleImageViewPhoto);
+
+        Contact contact = getIntent().getParcelableExtra("CONTACT");
+
+        if (contact != null) {
+            textViewName.setText(contact.getName());
+            textViewPhone.setText(contact.getPhone());
+            circleImageViewPhoto.setImageDrawable(ContextCompat
+                    .getDrawable(circleImageViewPhoto.getContext(), contact.getPhoto()));
+        }
+    }
 }

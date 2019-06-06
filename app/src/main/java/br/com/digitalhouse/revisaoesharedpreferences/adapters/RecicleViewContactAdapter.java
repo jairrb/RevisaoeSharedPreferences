@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.digitalhouse.revisaoesharedpreferences.R;
-import br.com.digitalhouse.revisaoesharedpreferences.RecycleViewClickListener;
+import br.com.digitalhouse.revisaoesharedpreferences.interfaces.RecycleViewClickListener;
 import br.com.digitalhouse.revisaoesharedpreferences.model.Contact;
 
 public class RecicleViewContactAdapter extends RecyclerView.Adapter<RecicleViewContactAdapter.ViewHolder> {
@@ -33,7 +33,7 @@ public class RecicleViewContactAdapter extends RecyclerView.Adapter<RecicleViewC
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecicleViewContactAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         final Contact contact = contacts.get(i);
         viewHolder.bind(contact);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +59,10 @@ public class RecicleViewContactAdapter extends RecyclerView.Adapter<RecicleViewC
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            imageViewPhoto = itemView.findViewById(R.id.imageViewPhoto);
+            textViewName = itemView.findViewById(R.id.textViewName);
+            textViewPhone = itemView.findViewById(R.id.textViewPhone);
 
         }
 
